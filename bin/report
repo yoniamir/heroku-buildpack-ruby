@@ -1,7 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
 # bin/report <build-dir> <cache-dir> <env-dir>
+require 'yaml'
 
-set -o errexit    # always exit on error
-set -o pipefail   # don't ignore exit codes when piping output
+report_output = { ruby: true }
+report_output[:ruby_version] = File.read('vendor/heroku/ruby_version')
 
-echo "ruby: true"
+puts report_output.to_yaml
