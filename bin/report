@@ -2,7 +2,13 @@
 # bin/report <build-dir> <cache-dir> <env-dir>
 require 'yaml'
 
-report_output = { ruby: true }
-report_output[:ruby_version] = File.read('vendor/heroku/ruby_version')
+begin
+  report_output = { ruby: true }
+  report_output[:ruby_version] = File.read('vendor/heroku/ruby_version')
 
-puts report_output.to_yaml
+  puts report_output.to_yaml
+rescue => e
+  hash = {}
+  hash["error"] = e.message
+  puts hash.to_yaml
+end
