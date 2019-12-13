@@ -2,7 +2,12 @@
 # bin/report <build-dir> <cache-dir> <env-dir>
 require 'yaml'
 
+BUILD_DIR = ARGV[0]
+CACHE_DIR = ARGV[1]
+ENV_DIR   = ARGV[2]
+
 begin
+  Dir.chdir(BUILD_DIR)
   report_output = { ruby: true }
   report_output[:ruby_version] = File.read('vendor/heroku/ruby_version')
 
