@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# bin/report <build-dir> <cache-dir> <env-dir>
+
+set -o errexit    # always exit on error
+set -o pipefail   # don't ignore exit codes when piping output
+
+echo "ruby: true"
