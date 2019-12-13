@@ -8,12 +8,13 @@ ENV_DIR   = ARGV[2]
 
 begin
   Dir.chdir(BUILD_DIR)
-  report_output = { ruby: true }
-  report_output[:ruby_version] = File.read('vendor/heroku/ruby_version')
+  report_output = { "ruby" => true }
+  report_output["ruby_version"] = File.read('vendor/heroku/ruby_version')
 
   puts report_output.to_yaml
 rescue => e
   hash = {}
   hash["error"] = e.message
+  hash["ruby"] = true
   puts hash.to_yaml
 end
