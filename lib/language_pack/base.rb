@@ -168,6 +168,8 @@ private ##################################
 
   def add_to_export(string)
     export = File.join(ROOT_DIR, "export")
+    puts "===== add to export ====="
+    puts string.inspect
     File.open(export, "a") do |file|
       file.puts string
     end

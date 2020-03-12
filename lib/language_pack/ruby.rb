@@ -358,6 +358,10 @@ SHELL
         set_export_default "JAVA_OPTS",  default_java_opts
         set_export_default "JRUBY_OPTS", default_jruby_opts
       end
+
+      export = File.join(ROOT_DIR, "export")
+      puts "===== export file after setup_export"
+      puts File.read(export)
     end
   end
 
@@ -1033,6 +1037,7 @@ params = CGI.parse(uri.query || "")
 
     legacy_path = "#{Dir.pwd}/#{NODE_BP_PATH}"
     path        = run("which node")
+    puts "which node: #{path.inspect}"
     if path && $?.success?
       @node_preinstall_bin_path = path
     elsif run("#{legacy_path}/node -v") && $?.success?
